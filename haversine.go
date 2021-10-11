@@ -1,6 +1,9 @@
-package haversine
+package main
 
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 const (
 	earthRadius = 6371
@@ -12,12 +15,12 @@ func toRad(d float64) float64 {
 
 type Coord [2]float64
 
-func Haversine(dest Coord, arr Coord) float64 {
-	dLat := toRad(arr[0] - dest[1])
-	dLon := toRad(arr[1] - dest[1])
+func Haversine(from Coord, to Coord) float64 {
+	dLat := toRad(from[0] - to[0])
+	dLon := toRad(from[1] - to[1])
 
-	theta := toRad(dest[0])
-	phi := toRad(arr[0])
+	theta := toRad(to[0])
+	phi := toRad(from[0])
 
 	a := math.Pow(math.Sin((dLat/2)), 2) +
 		math.Pow((math.Sin(dLon/2)), 2)*math.Cos(theta)*math.Cos(phi)
@@ -25,4 +28,9 @@ func Haversine(dest Coord, arr Coord) float64 {
 	c := 2 * math.Asin(math.Sqrt(a))
 
 	return earthRadius * c
+}
+
+func main() {
+	t := Haversine(Coord{53, -6}, Coord{43, 2})
+	fmt.Println(t)
 }
