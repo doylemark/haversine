@@ -15,7 +15,7 @@ const haversine = (from: Coord, to: Coord) => {
   const a =
     Math.pow(Math.sin(dLat / 2), 2) +
     Math.pow(Math.sin(dLon / 2), 2) * Math.cos(theta) * Math.cos(phi);
-
+  console.log(a)
   const c = 2 * Math.asin(Math.sqrt(a));
 
   return EARTH_RADIUS * c;

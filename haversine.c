@@ -10,7 +10,7 @@ double toRad(double d)
 
 double haversine(double from[2], double to[2])
 {
-  double dLat = toRad(to[0] - from[1]);
+  double dLat = toRad(to[0] - from[0]);
   double dLon = toRad(to[1] - from[1]);
 
   double theta = toRad(from[0]);
