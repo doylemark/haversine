@@ -5,14 +5,13 @@ const toRad = (degrees: number) => (degrees * Math.PI) / 180;
 type Coord = [number, number];
 
 // https://en.wikipedia.org/wiki/Haversine_formula
-const haversine = (dest: Coord, arr: Coord) => {
-  const dLat = toRad(arr[0] - dest[0]);
-  const dLon = toRad(arr[1] - dest[1]);
+const haversine = (from: Coord, to: Coord) => {
+  const dLat = toRad(to[0] - from[0]);
+  const dLon = toRad(to[1] - from[1]);
 
-  const theta = toRad(dest[0]);
-  const phi = toRad(arr[0]);
+  const theta = toRad(from[0]);
+  const phi = toRad(to[0]);
 
-  // Haversine Formula
   const a =
     Math.pow(Math.sin(dLat / 2), 2) +
     Math.pow(Math.sin(dLon / 2), 2) * Math.cos(theta) * Math.cos(phi);
@@ -21,3 +20,5 @@ const haversine = (dest: Coord, arr: Coord) => {
 
   return EARTH_RADIUS * c;
 };
+
+console.log(haversine([53, -6], [43,2]));
