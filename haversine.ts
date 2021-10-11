@@ -21,4 +21,4 @@ const haversine = (from: Coord, to: Coord) => {
   return EARTH_RADIUS * c;
 };
 
-console.log(haversine([53, -6], [43,2]));
+console.log(haversine([53, -6], [43, 2]));

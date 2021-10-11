@@ -15,6 +15,7 @@ func toRad(d float64) float64 {
 
 type Coord [2]float64
 
+// Haversine implements https://en.wikipedia.org/wiki/Haversine_formula
 func Haversine(from Coord, to Coord) float64 {
 	dLat := toRad(from[0] - to[0])
 	dLon := toRad(from[1] - to[1])
